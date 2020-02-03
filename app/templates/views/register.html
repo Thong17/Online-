@@ -1,0 +1,104 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+<div class="container" style="width: 500px;">
+    <h1>Register</h1>
+    <form action="/register" method="post" enctype="multipart/form-data">
+        {{form.hidden_tag()}}
+        <div class="form-group">
+            {{ form.username.label }}
+            {% if form.username.errors %}
+                {{ form.username(class='form-control is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.username.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+            {{ form.username(class='form-control') }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.gender.label }}
+            {% if form.gender.errors %}
+                {{ form.gender(class='form-control is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.gender.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+            {{ form.gender(class='form-control') }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.birthdate.label }}
+            {% if form.birthdate.errors %}
+                {{ form.birthdate(class='form-control is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.birthdate.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+            {{ form.birthdate(class='form-control') }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.email.label }}
+            {% if form.email.errors %}
+                {{ form.email(class='form-control is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+            {{ form.email(class='form-control') }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.password.label }}
+            {% if form.password.errors %}
+                {{ form.password(class='form-control is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+            {{ form.password(class='form-control') }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.confirm.label }}
+            {% if form.confirm.errors %}
+                {{ form.confirm(class='form-control is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.confirm.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+            {{ form.confirm(class='form-control') }}
+            {% endif %}
+        </div>
+        {{ form.submit(class='btn border') }}
+    </form>
+</div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(document).ready(function(){
+            $('#submit').on('click', function(){
+                $('#username').removeAttr('required')
+                $('#gender').removeAttr('required')
+                $('#birthdate').removeAttr('required')
+                $('#email').removeAttr('required')
+                $('#password').removeAttr('required')
+                $('#confirm').removeAttr('required')
+            })
+        })
+    </script>
+{% endblock %}
